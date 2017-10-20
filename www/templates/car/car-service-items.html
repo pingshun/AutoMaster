@@ -1,0 +1,31 @@
+<ion-view view-title="{{car.name}} 保养项目">
+
+  <ion-nav-buttons side="right">
+    <div class="buttons">
+      <button class="button button-clear" ng-click="addNew($event)">
+        <i class="ion-plus" style="font-size: 24px;"></i>
+      </button>
+    </div>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in car.service_items | orderBy:sortServiceItems" type="item-text-wrap" ng-click="showDetail(item)">
+        <img  ng-src="{{item.getPic()}}">
+        <img class="item-status-icon" ng-src="{{item.getStatusPic(car.mileage)}}">
+        <h2>{{item.name}}</h2>
+        <p>保养间隔:{{item.servicePeriodText()}}</p>
+        <p>最后保养:
+          <span ng-if="item.last_service_time">{{item.last_service_time | date:"yyyy-MM-dd":"GMT+8"}} [{{item.last_service_mileage}}]公里</span>
+          <span ng-if="!item.last_service_time">无记录</span>
+        </p>
+        <p>状态:
+          <span>{{item.serviceWarningText(car.mileage)}}</span>
+        </p>
+        <ion-option-button class="button-assertive" ng-click="delete(item)">
+          删除
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

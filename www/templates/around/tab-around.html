@@ -1,0 +1,38 @@
+<ion-view view-title="附近服务">
+  <ion-nav-buttons side="right">
+
+    <div class="buttons">
+      <input type="submit" value="搜索" ng-click="show_search()">
+      </input>
+    </div>
+  </ion-nav-buttons>
+
+
+  <div id="around_content">
+    <div ng-show="show_config">
+      <label class="item item-input">
+        <div class="input-label">
+          <span>关键字:</span>
+        </div>
+        <input placeholder="可以为空" type="text" name="key" required ng-maxlength="20" ng-model="search_key">
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          <span>服务类型:</span>
+        </div>
+        <select ng-model="search_type" ng-options="r as r for r in search_type_opts"></select>
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          <span>搜索半径(公里):</span>
+        </div>
+        <select ng-model="search_radius" ng-options="r as r for r in search_radius_opts"></select>
+      </label>
+
+      <button class="button button-full button-stable" ng-click="refresh()">搜索</button>
+    </div>
+    <div id="map_container"></div>
+  </div>
+
+
+</ion-view>

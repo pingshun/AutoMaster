@@ -1,0 +1,70 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view>
+
+  <ion-nav-title>
+    <H1 class="title">
+      {{car.name}}
+      <!--<button class="button button-clear" ng-click="showPopMenu($event)">
+        {{car.name}}<i class="ion-ios-arrow-down"></i>
+      </button>-->
+    </H1>
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <div class="buttons">
+      <button class="button button-clear" ng-click="showPopMenu($event)">
+        <i class="ion-more" style="font-size: 24px;"></i>
+      </button>
+    </div>
+  </ion-nav-buttons>
+  <ion-content>
+    <!--img ng-src="{{car.face}}" style="width: 64px; height: 64px"-->
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+        <img style="max-width: 60px; max-height: 45px; top: 20px; left: 5px;" ng-src="{{car.getPic()}}">
+        <h2 style="text-align: left;">{{car.name}}</h2>
+        <p>{{car.plate_num}}</p>
+      </ion-item>
+      <ion-item class="item-remove-animate item-icon-right" type="item-text-wrap" ng-click="updateMileage()">
+        <h2>当前里程: {{car.mileage}}</h2>
+        <p>最新更新时间:
+          <span class="font_{{car.warningLevelForUpdateMileage()}}">
+            {{car.last_update | date:"yyyy-MM-dd HH:mm":"GMT+8"}}
+          </span>
+        </p>
+      </ion-item>
+      <ion-item class="item-remove-animate item-icon-right" type="item-text-wrap" href="#/tab/main/service_items/{{car.id}}">
+        <h2>保养计划</h2>
+        <p>已为该车辆设置了 {{car.service_items.length}} 项保养项目</p>
+        <p ng-if="car.needsServiceItemCount()">有[<span span class="font_alert">{{car.needsServiceItemCount()}}</span> ]项需要/即将需要保养</p>
+        <p ng-if="!car.needsServiceItemCount()">所有项目保养状态良好</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item-remove-animate item-icon-right" type="item-text-wrap" href="#/tab/main/service_records/{{car.id}}">
+        <h2>保养状态</h2>
+        <p>养车专家为该车记录了 {{car.service_records.length}} 次保养</p>
+        <p>最后保养: {{car.lastService() ? (car.lastService().finish_time | date: 'yyyy-MM-dd':'GMT+8') : '-'}}, {{car.lastService() ? (car.lastService().mileage + '公里') : '-'}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <script id="popover_menu.html" type="text/ng-template">
+    <ion-popover-view class="popover-menu" style="height: 240px;"> <!-- height = item_num * 41 + 2 -->
+      <ion-list >
+        <div class="popover-menu">
+          <ion-item class="popover-menu-item" ng-click="changeName()"><p>修改名称</p></ion-item>
+          <ion-item class="popover-menu-item" ng-click="changePlateNum()"><p>修改车牌号</p></ion-item>
+          <ion-item class="popover-menu-item" ng-click="updateMileage()"><p>更新里程</p></ion-item>
+          <ion-item class="popover-menu-item" ng-click="addServiceItem()"><p>添加保养项目</p></ion-item>
+          <ion-item class="popover-menu-item" ng-click="addServiceRecord()"><p>记录一次保养</p></ion-item>
+          <ion-item class="popover-menu-item" ng-click="goMessageCenter()"><p>提醒中心</p><i ng-show="car.warningCount()" class="badge badge-assertive">{{car.warningCount()}}</i></ion-item>
+        </div>
+      </ion-list>
+    </ion-popover-view>
+  </script>
+</ion-view>
+

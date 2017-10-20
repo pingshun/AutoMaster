@@ -1,0 +1,24 @@
+<ion-view view-title="{{car.name}} 保养记录">
+
+  <ion-nav-buttons side="right">
+    <div class="buttons">
+      <button class="button button-clear" ng-click="addNew($event)">
+        <i class="ion-plus" style="font-size: 24px;"></i>
+      </button>
+    </div>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="record in car.service_records | orderBy: record.finish_time: 'desc'" type="item-text-wrap" ng-click="showDetail(record)">
+        <h2>{{record.finish_time | date: 'yyyy-MM-dd':'GMT+8'}}, {{record.service_store}}</h2>
+        <p>保养里程:{{record.mileage}} 公里</p>
+        <p>保养项目:{{record.serviceItemsText()}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-option-button class="button-assertive" ng-click="delete(record)">
+          删除
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,19 @@
+<ion-view view-title="用户信息">
+  <ion-content>
+    <div>
+      <ion-item class="item-remove-animate item-icon-right" type="item-text-wrap">
+        <h2>用户名<p class="item-value">{{getUserText()}}</p></h2>
+      </ion-item>
+      <ion-item class="item item-input item-select">
+        <div class="input-label">
+          <h2>性别</h2>
+        </div>
+        <select ng-model="user_data.gender" ng-options="key as value for (key , value) in genders"></select>
+      </ion-item>
+      <ion-item class="item-remove-animate item-icon-right" type="item-text-wrap">
+        <h2>电子信箱<p class="item-value">{{getUserEmail()}}</p></h2>
+      </ion-item>
+      <button class="button button-full button-stable" ng-click="save()">保存</button>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,66 @@
+<ion-view view-title="首页">
+  <!--<ion-nav-buttons side="left">
+    <div class="buttons" ng-click="action()">
+      <button class="button button-icon button-clear">
+        <i class="fa fa-comenting-o">
+          <span class="badge badge-assertive" ng-if="true">9</span>
+        </i>
+      </button>
+    </div>
+  </ion-nav-buttons>-->
+  <ion-nav-buttons side="right">
+    <div class="buttons">
+      <button class="button button-clear" ng-click="showAdd()">
+        <i class="ion-plus" style="font-size: 24px;"></i>
+      </button>
+    </div>
+  </ion-nav-buttons>
+  <ion-content>
+    <div ng-if="loginStatus == 1">
+      <div ng-if="has_cars()">
+        <ion-list>
+          <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="car in cars" type="item-text-wrap" href="#/tab/main/{{car.id}}">
+            <img style="max-width: 60px; max-height: 45px; top: 20px; left: 5px;" ng-src="{{car.getPic()}}">
+            <h2 class="has-badge">{{car.name}}<i ng-show="car.warningCount()" class="badge badge-assertive">{{car.warningCount()}}</i></h2>
+            <p>车况:{{car.statusSummary()}}</p>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+            <ion-option-button class="button-assertive" ng-click="delete(car)">
+              删除
+            </ion-option-button>
+          </ion-item>
+          <ion-item>
+            <button ng-click="bootStrapDb()">
+              BootStrap
+            </button>
+            <button ng-click="queryNotify()">
+              Query
+            </button>
+            <button ng-click="test()">
+              Send111
+            </button>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div ng-if="!has_cars()">
+        <h2>无车辆记录，请点击《添加》按钮添加您的车辆信息！></h2>
+      </div>
+    </div>
+    <div ng-if="loginStatus == -1">
+      <label class="item item-input">
+        <span class="ion-person"></span>
+        <input style="margin: 0 0 0 12px;" type="text" ng-model="login_data.user">
+      </label>
+
+      <label class="item item-input">
+        <span class="ion-locked"></span>
+        <input style="margin: 0 0 0 12px;" type="password" ng-model="login_data.password">
+      </label>
+      <button class="button button-full button-stable" ng-click="login()">提交</button>
+      <div><a href="#/tab/main/forgot-pw">忘记密码</a></div>
+    </div>
+    <div ng-if="loginStatus == 0">
+      登录错误,请检查网络或重新登录!!
+    </div>
+  </ion-content>
+</ion-view>

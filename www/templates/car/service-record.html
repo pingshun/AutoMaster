@@ -1,0 +1,50 @@
+<ion-view view-title="Record Detail">
+  <ion-nav-buttons side="right">
+    <div class="buttons">
+      <input type="submit"
+             ng-disabled="form.recordDetail.$invalid"
+             ng-click="saveRecord($event)">
+      </input>
+    </div>
+  </ion-nav-buttons>
+  <ion-content>
+    <form name="form.recordDetail" novalidate>
+      <div class="list">
+        <label class="item item-input">
+          <div class="input-label">保养日期:</div>
+          <input type="date" name="finish_time" required ng-model="record_bak.finish_date">
+          <span style="color:red" ng-show="form.recordDetail.finish_time.$dirty && form.recordDetail.finish_time.$invalid">
+            <span ng-show="form.recordDetail.finish_time.$error.required">请填写时间</span>
+          </span>
+        </label>
+        <label class="item item-input">
+          <div class="input-label">里程:</div>
+          <input type="number" name="mileage" required ng-model="record_bak.mileage">
+          <span style="color:red" ng-show="form.recordDetail.mileage.$dirty && form.recordDetail.mileage.$invalid">
+            <span ng-show="form.recordDetail.mileage.$error.required">请填写里程</span>
+          </span>
+        </label>
+        <label class="item item-input">
+          <div class="input-label">保养门店:</div>
+          <input type="text" name="service_store" ng-model="record_bak.service_store">
+        </label>
+        <label class="item item-input">
+          <div class="input-label">总花费:</div>
+          <input type="text" name="cost" ng-model="record_bak.cost">
+        </label>
+        <label class="item">
+          <div class="input-label">保养项目:</div>
+          <div class="list">
+            <ion-checkbox ng-repeat="item in all_service_items" ng-model="item.checked" ng-checked="item.checked">
+              {{item.name}}
+            </ion-checkbox>
+          </div>
+        </label>
+        <label class="item item-input">
+          <div class="input-label">备注:</div>
+          <textarea placeholder="备注" name="service_remark" ng-model="record_bak.remark"></textarea>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

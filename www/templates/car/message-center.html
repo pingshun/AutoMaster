@@ -1,0 +1,10 @@
+<ion-view view-title="提醒中心">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="message in messages" type="item-text-wrap" ng-click="showDetail(item)">
+        <h2>{{message.title}}</h2>
+        <p>{{message.message}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

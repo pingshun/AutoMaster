@@ -1,0 +1,62 @@
+<ion-view view-title="注册">
+  <ion-nav-buttons side="right">
+    <div class="buttons">
+      <input type="submit"
+             ng-disabled="form.regForm.username.$invalid
+               || form.regForm.password.$invalid
+               || form.regForm.email.$invalid
+               || pw_mismatch"
+             ng-click="register()">
+      </input>
+    </div>
+  </ion-nav-buttons>
+  <ion-content>
+    <form name="form.regForm" novalidate>
+      <div>
+        <div>
+          <label class="item item-input">
+            <span class="ion-person"></span>
+            <input name="username" style="margin: 0 0 0 12px;" type="text" required ng-minlength="4" ng-maxlength="20" ng-pattern="REG_USER_NAME" ng-model="user_data.user_name" placeholder="用户名">
+          </label>
+          <span style="color:red" ng-show="form.regForm.username.$dirty && form.regForm.username.$invalid">
+            <span ng-show="form.regForm.username.$error.required">请输入用户名</span>
+            <span ng-show="form.regForm.username.$error.maxlength">输入超长</span>
+            <span ng-show="form.regForm.username.$error.minlength">至少需要4个字符</span>
+            <span ng-show="form.regForm.username.$error.pattern">用户名只支持字母,数字,'-'和'_'</span>
+          </span>
+        </div>
+        <div>
+          <label class="item item-input">
+            <span class="ion-locked"></span>
+            <input name="password" style="margin: 0 0 0 12px;" type="password" required ng-model="user_data.password" ng-change="pwChanged()" placeholder="密码">
+
+          </label>
+          <span style="color:red" ng-show="form.regForm.password.$dirty && form.regForm.password.$invalid">
+            <span ng-show="form.regForm.password.$error.required">密码不能为空</span>
+          </span>
+        </div>
+
+        <div>
+          <label class="item item-input">
+            <span class="ion-locked"></span>
+            <input name="pw_retype" style="margin: 0 0 0 12px;" type="password" ng-model="user_data.retype" ng-change="pwChanged()" placeholder="再次输入">
+          </label>
+          <span style="color:red" ng-show="pw_mismatch">
+            <span>两次输入的密码不相同</span>
+          </span>
+        </div>
+
+        <div>
+          <label class="item item-input">
+            <span class="ion-email"></span>
+            <input name="email" style="margin: 0 0 0 12px;" type="email" required ng-model="user_data.email" placeholder="电子邮箱">
+          </label>
+          <span style="color:red" ng-show="form.regForm.email.$dirty && form.regForm.email.$invalid">
+            <span ng-show="form.regForm.email.$error.required">请输入邮箱地址</span>
+            <span ng-show="form.regForm.email.$error.email">邮箱格式不正确</span>
+          </span>
+      </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
