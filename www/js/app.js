@@ -220,6 +220,16 @@ angular.module('car', ['ionic', 'car.controllers', 'car.services', 'ngCordova'])
       }
     })
 
+    .state('tab.about', {
+      url: '/config/about',
+      views: {
+        'tab-config': {
+          templateUrl: 'templates/config/about.html',
+          controller: 'AboutCtrl'
+        }
+      }
+    })
+
     .state('tab.current-user', {
       url: '/config/current-user',
       views: {

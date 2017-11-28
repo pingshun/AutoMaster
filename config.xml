@@ -20,9 +20,6 @@
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
-    <plugin name="cordova-plugin-geolocation" spec="^2.4.3">
-        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value=" " />
-    </plugin>
     <platform name="ios">
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
         <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
@@ -55,5 +52,8 @@
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
     </platform>
-    <engine name="ios" spec="~4.4.0" />
+    <engine name="ios" spec="^4.4.0" />
+    <plugin name="cordova-plugin-geolocation" spec="^2.4.3">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value=" " />
+    </plugin>
 </widget>

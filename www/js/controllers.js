@@ -680,4 +680,7 @@ angular.module('car.controllers', [])
     }
   }])
 
+  .controller('AboutCtrl', ['$scope', function($scope) {
+  }])
+
 ;

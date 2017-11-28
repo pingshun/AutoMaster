@@ -2,6 +2,7 @@
   <ion-content>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="message in messages" type="item-text-wrap" ng-click="showDetail(item)">
+        <img  ng-src="img/main/warning.png">
         <h2>{{message.title}}</h2>
         <p>{{message.message}}</p>
       </ion-item>

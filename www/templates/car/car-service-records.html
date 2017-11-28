@@ -11,6 +11,7 @@
   <ion-content>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="record in car.service_records | orderBy: record.finish_time: 'desc'" type="item-text-wrap" ng-click="showDetail(record)">
+        <img  ng-src="img/main/finished.png">
         <h2>{{record.finish_time | date: 'yyyy-MM-dd':'GMT+8'}}, {{record.service_store}}</h2>
         <p>保养里程:{{record.mileage}} 公里</p>
         <p>保养项目:{{record.serviceItemsText()}}</p>

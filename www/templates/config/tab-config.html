@@ -1,4 +1,4 @@
-<ion-view view-title="Account">
+<ion-view view-title="配置">
   <ion-content>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" href="{{getUserHref()}}">
@@ -8,20 +8,22 @@
       </ion-item>
       <label class="item item-input item-select">
         <div class="input-label">
-          <span>提醒周期</span>
+          <p>提醒周期</p>
         </div>
         <select ng-change="notifyPeriodChanged(settings.notify_period)" ng-model="settings.notify_period" ng-options="key as value for (key , value) in notify_period_items"></select>
       </label>
 
       <label class="item item-input item-select">
         <div class="input-label">
-          <span>BootStrap</span>
+          <p>BootStrap</p>
         </div>
         <button ng-click="bootStrapDb()">
           BootStrap
         </button>
       </label>
-
+      <ion-item class="item-icon-right" type="item-text-wrap" href="#/tab/config/about">
+        <p>养车专家</p>
+      </ion-item>
       <button ng-show="settings.am_user.user" class="button button-full button-stable" ng-click="logout()">退出登录</button>
     </ion-list>
   </ion-content>
