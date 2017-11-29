@@ -1,7 +1,7 @@
 /**
  * Created by pge on 16/8/10.
  */
-angular.module('util.popup', [])
+angular.module('popup', [])
 
 .factory('Popup', [function () {
   return {

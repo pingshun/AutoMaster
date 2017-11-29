@@ -6,12 +6,14 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var uglify = require('gulp-uglify');
+var config = require('./config.json')
 
 var paths = {
   sass: ['./scss/**/*.scss']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['sass', 'js:merge']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -24,6 +26,13 @@ gulp.task('sass', function(done) {
     .pipe(rename({ extname: '.min.css' }))
     .pipe(gulp.dest('./www/css/'))
     .on('end', done);
+});
+
+gulp.task('js:merge', function() {
+  gulp.src('./www/js/**/*.js')
+    .pipe(concat('am-all.js'))
+    .pipe(config.is_dev ? gutil.noop() : uglify({mangle:true}))
+    .pipe(gulp.dest('./www/dest/scripts/'))
 });
 
 gulp.task('watch', function() {

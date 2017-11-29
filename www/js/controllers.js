@@ -1,4 +1,4 @@
-angular.module('car.controllers', [])
+angular.module('car.controllers')
 
   .controller('CarsCtrl', ['$scope', '$rootScope', 'Car', 'Cars', '$ionicModal', '$state', '$http', 'ConfService', '$ionicHistory', 'Util', '$cordovaGeolocation', function($scope, $rootScope, Car, Cars, $ionicModal, $state, $http, ConfService, $ionicHistory, Util, $cordovaGeolocation) {
 

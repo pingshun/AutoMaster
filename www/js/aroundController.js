@@ -1,4 +1,4 @@
-angular.module('car.controllers')
+angular.module('car.controllers', [])
   .controller('AroundCtrl', ['$scope', 'Util', function($scope, Util) {
     angular.element(document).ready(function () {
       $scope.loadMap();

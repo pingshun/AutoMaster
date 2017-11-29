@@ -1,7 +1,7 @@
 /**
  * Created by pge on 16/8/5.
  */
-angular.module('util', ['util.popup'])
+angular.module('util', ['popup'])
 
   .factory('Util', ['Popup', '$ionicPopup', '$timeout', '$http', function(Popup, $ionicPopup, $timeout, $http) {
     return {
