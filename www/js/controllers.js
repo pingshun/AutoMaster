@@ -99,6 +99,15 @@ angular.module('car.controllers')
       }
     }
 
+    $scope.confirm = function () {
+      var confirm_text = "请确认电子邮件:<br\>" + $scope.user_data.email + "<br\>(电子邮件用于密码找回，请勿乱填!)";
+      Util.showConfirm(confirm_text, function (res) {
+        if (res) {
+          $scope.register();
+        }
+      })
+    }
+
     $scope.register = function () {
       $http({
         url: CONSTANTS.register_url,

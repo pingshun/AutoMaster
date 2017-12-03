@@ -42,6 +42,17 @@ angular.module('util', ['popup'])
           popup.close();
         }, 3000);*/
       },
+      showConfirm: function (confirm_text, fn_cb) {
+        var confirmPopup = $ionicPopup.confirm({
+          title: '确认',
+          template: confirm_text
+        });
+        confirmPopup.then(function(res) {
+          if (fn_cb) {
+            fn_cb(res);
+          }
+        });
+      },
       encrypt: function(str) {
         var pwd = CONSTANTS.app_en_name;
         var prand = "";

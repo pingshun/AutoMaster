@@ -677,6 +677,15 @@ angular.module('car.controllers')
       }
     }
 
+    $scope.confirm = function () {
+      var confirm_text = "请确认电子邮件:<br\>" + $scope.user_data.email + "<br\>(电子邮件用于密码找回，请勿乱填!)";
+      Util.showConfirm(confirm_text, function (res) {
+        if (res) {
+          $scope.register();
+        }
+      })
+    }
+
     $scope.register = function () {
       $http({
         url: CONSTANTS.register_url,
@@ -2373,6 +2382,17 @@ angular.module('util', ['popup'])
         /*$timeout(function () {
           popup.close();
         }, 3000);*/
+      },
+      showConfirm: function (confirm_text, fn_cb) {
+        var confirmPopup = $ionicPopup.confirm({
+          title: '确认',
+          template: confirm_text
+        });
+        confirmPopup.then(function(res) {
+          if (fn_cb) {
+            fn_cb(res);
+          }
+        });
       },
       encrypt: function(str) {
         var pwd = CONSTANTS.app_en_name;
