@@ -190,7 +190,18 @@ angular.module('car.controllers')
     $scope.form = {
       addCar: {}
     };
-    $scope.brands = Brand.all();
+
+    // Object.values doesn't work when deploy to an iPhone
+    var allBrands = [];
+    angular.forEach(Brand.all(), function (value, key) {
+      allBrands.push(value);
+    });
+    allBrands.sort(
+      function compareFunction(param1,param2){
+        return param1.pinyin.localeCompare(param2.pinyin);
+      }
+    );
+    $scope.brands = allBrands;
     $scope.carInfo = {};
 
     $scope.saveCarDetail = function($event) {
