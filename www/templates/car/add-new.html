@@ -26,7 +26,7 @@
           <div class="input-label">
             <span>品牌:</span>
           </div>
-          <select ng-model="carInfo.brand" ng-options="key as value.chinese_name for (key , value) in brands"></select>
+          <select ng-model="carInfo.brand" ng-options="key as brand.chinese_name for (key, brand) in brands"></select>
         </label>
         <label class="item item-input">
           <div class="input-label">

@@ -190,7 +190,6 @@ angular.module('car.controllers')
     $scope.form = {
       addCar: {}
     };
-
     $scope.brands = Brand.all();
     $scope.carInfo = {};
 
