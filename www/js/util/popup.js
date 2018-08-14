@@ -32,10 +32,10 @@ angular.module('popup', [])
         scope: $scope,
         buttons: [
           {
-            text: 'Cancel',
+            text: '取消',
           },
           {
-            text: '<b>Save</b>',
+            text: '<b>保存</b>',
             type: 'button-positive',
             onTap: function(e) {
               if ($scope.form.editForm.input.$invalid) {
